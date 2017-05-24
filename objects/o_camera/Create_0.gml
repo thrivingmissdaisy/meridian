@@ -8,8 +8,8 @@ camera_set_proj_mat(camera, pm);
 
 view_camera[0] = camera;
 
-if(instance_exists(o_player)){
-	follow = o_player;
+if(instance_exists(o_camera_target)){
+	follow = o_camera_target;
 }else{
 	follow = noone;
 }

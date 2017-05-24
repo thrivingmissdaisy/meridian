@@ -1,6 +1,6 @@
 /// @description move toward target
-x += (targetx-x)/25;
-y += (targety-y)/25;
+x += (targetx-x)/45;
+y += (targety-y)/45;
 
 if(follow != noone){
 	targetx = follow.x;

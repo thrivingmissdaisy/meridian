@@ -1,7 +1,6 @@
 /// @description initialize the game
 #macro TILE_SIZE 64
 
-
 //set game resolution based on this display
 ideal_width = 0;
 ideal_height = 768;
