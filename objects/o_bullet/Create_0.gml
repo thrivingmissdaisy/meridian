@@ -1,2 +1,3 @@
 /// @description initialize the bullet
-//*empty
+range = 30;
+alarm[0] = range;
