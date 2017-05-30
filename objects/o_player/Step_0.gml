@@ -28,7 +28,7 @@ switch(state){
 	case "teleport":
 		aim(5);//*
 		move_collide();
-		//*teleport aim script 
+		teleport();
 	break;
 	case "pause":
 		//*pause menu script

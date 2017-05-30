@@ -4,7 +4,10 @@
 var gp = argument0;
 
 fire = gamepad_button_check(gp, gp_shoulderrb);
+fire_pressed = gamepad_button_check_pressed(gp, gp_shoulderrb);
 fire_released = gamepad_button_check_released(gp, gp_shoulderrb);
+
+dash_pressed = gamepad_button_check_pressed(gp, gp_shoulderlb);
 
 swap_a = gamepad_button_check_pressed(gp, gp_face1);//A
 swap_b = gamepad_button_check_pressed(gp, gp_face2);//B

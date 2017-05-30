@@ -1,4 +1,4 @@
-/// @description move towards target and explode on collision
+/// @description seek out the player
 
 //reset steering
 steering = vec2(0, 0);

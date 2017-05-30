@@ -1,12 +1,23 @@
 //get movement input for character
 if(get_axis(0, gp_axislh, gp_axislv, move_dead_zone)){
 	var dir = point_direction(0, 0, gamepad_axis_value(0, gp_axislh), gamepad_axis_value(0, gp_axislv));
-	dx = haxis*spd;
-	dy = vaxis*spd;
-	
+	//dash if left shoulder trigger pressed
+	if(dash_pressed && dash_obtained && can_dash){
+		can_dash = false;
+		dashing = true;
+		alarm[1] = dash_cooldown;
+		alarm[2] = dash_length;
+	}
+	if(dashing){
+		dx = haxis*dash_spd;
+		dy = vaxis*dash_spd;
+	}else{
+		dx = haxis*spd;
+		dy = vaxis*spd;
+	}
 	lean -= dx;
 	lean = clamp(lean, -lean_max, lean_max);
-	/*for aiming with movement not dure it is good
+	/*for aiming with movement not sure it is good
 	if(angle != dir && !aiming){
 		var dif = angle_difference(angle, dir);
 		angle -= min(abs(dif), 8) * sign(dif);

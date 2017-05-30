@@ -5,11 +5,18 @@ aiming = false;
 lean = 0;
 lean_max = 25;
 spd = 4;
+dash_spd = 10;
 angle = 0;//for drawing the weapons at the right angle and firing
 can_fire = true;
 reload = 10;
+dashing = false;
+dash_length = 10;
+can_dash = true;
+dash_cooldown = 90;
 missile_lock = 0;
 missile_lock_max = 10;
+teleport_x = 0;
+teleport_y = 0;
 
 dir_x = 0;
 dir_y = 0;
@@ -22,6 +29,7 @@ blaster_obtained = false;
 bomb_obtained = false;
 missile_obtained = false;
 teleport_obtained = false;
+dash_obtained = true;//*make collectable
 
 //get the tile_map_id for tile collision
 var tile_layer = layer_get_id("Test");
