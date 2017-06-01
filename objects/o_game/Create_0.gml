@@ -1,5 +1,8 @@
 /// @description initialize the game
 #macro TILE_SIZE 64
+#macro X 0
+#macro Y 1
+#macro WALKABLE 2
 
 //set game resolution based on this display
 ideal_width = 0;
