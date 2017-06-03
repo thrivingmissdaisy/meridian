@@ -1,5 +1,5 @@
 /// @description seek out the player
-
+/*
 //reset steering
 steering = vec2(0, 0);
 

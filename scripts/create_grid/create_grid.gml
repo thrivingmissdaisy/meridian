@@ -14,6 +14,6 @@ tilemap = layer_tilemap_get_id(tile_layer);
 for(var xx=0; xx<width; xx++){
 	for(var yy=0; yy<height; yy++){
 		var tiledata = tilemap_get_at_pixel(tilemap, x+xx*TILE_SIZE, y+yy*TILE_SIZE);
-		grid[xx, yy] = create_node(x+xx*TILE_SIZE, y+yy*TILE_SIZE, tile_get_empty(tiledata));
+		grid[xx, yy] = create_node(x+xx*TILE_SIZE, y+yy*TILE_SIZE, tile_get_empty(tiledata), xx, yy);
 	}
 }
