@@ -1,9 +1,12 @@
 //shoot
-if(fire && can_fire){
-	can_fire = false;
-	var bullet = instance_create_depth(x + dir_x, y + dir_y, depth, o_bullet);
-	bullet.direction = angle;
-	bullet.speed = 10;
-	bullet.image_angle = angle;
-	alarm[0] = reload;
+if(blaster_left||blaster_right){
+	facing = blaster_right - blaster_left;//set facing direction
+	
+	if(can_fire){
+		can_fire = false;
+		var bullet = instance_create_depth(x, y, depth, o_bullet);
+		bullet.facing = facing;
+		alarm[0] = reload;
+	}
 }
+

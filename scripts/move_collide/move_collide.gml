@@ -1,6 +1,7 @@
 //get movement input for character
-if(get_axis(0, gp_axislh, gp_axislv, move_dead_zone)){
-	var dir = point_direction(0, 0, gamepad_axis_value(0, gp_axislh), gamepad_axis_value(0, gp_axislv));
+if(get_axis(0, gp_axislh, gp_axislv, dead_zone)){
+	facing = (haxis > 0) - (haxis < 0);
+	//*var dir = point_direction(0, 0, gamepad_axis_value(0, gp_axislh), gamepad_axis_value(0, gp_axislv));
 	//dash if left shoulder trigger pressed
 	if(dash_pressed && dash_obtained && can_dash){
 		can_dash = false;
@@ -9,32 +10,24 @@ if(get_axis(0, gp_axislh, gp_axislv, move_dead_zone)){
 		alarm[2] = dash_length;
 	}
 	if(dashing){
-		dx = haxis*dash_spd;
-		dy = vaxis*dash_spd;
+		velocity[X] = haxis*dash_spd;
+		velocity[Y] = vaxis*dash_spd;
 	}else{
-		dx = haxis*spd;
-		dy = vaxis*spd;
+		velocity[X] = haxis*spd;
+		velocity[Y] = vaxis*spd;
 	}
-	lean -= dx;
+	lean -= velocity[X];
 	lean = clamp(lean, -lean_max, lean_max);
-	/*for aiming with movement not sure it is good
-	if(angle != dir && !aiming){
-		var dif = angle_difference(angle, dir);
-		angle -= min(abs(dif), 8) * sign(dif);
-		dir_x = lengthdir_x(64, dir);
-		dir_y = lengthdir_y(64, dir);
-	}
-	*/
 }else{
 	lean = lerp(lean, 0, 0.2);
-	dx = 0;//*if you want deccelerate put it here
-	dy = 0;
+	velocity[X] = 0;//*if you want deccelerate put it here
+	velocity[Y] = 0;
 }
 
-y += dy;//move character in y direction
+y += velocity[Y];//move character in y direction
 
 //vertical collision
-if(dy < 0){//up
+if(velocity[Y] < 0){//up
 	var t1 = tilemap_get_at_pixel(tilemap, bbox_left, bbox_top) & tile_index_mask;
 	var t2 = tilemap_get_at_pixel(tilemap, bbox_right, bbox_top) & tile_index_mask;
 	if(t1 !=0 || t2 != 0){//collision
@@ -48,10 +41,10 @@ if(dy < 0){//up
 	}
 }
 
-x += dx;//move character in x direction
+x += velocity[X];//move character in x direction
 
 //horizontal collision
-if(dx < 0){//left
+if(velocity[X] < 0){//left
 	var t1 = tilemap_get_at_pixel(tilemap, bbox_left, bbox_top) & tile_index_mask;
 	var t2 = tilemap_get_at_pixel(tilemap, bbox_left, bbox_bottom) & tile_index_mask;
 	if(t1 !=0 || t2 != 0){//collision
@@ -64,3 +57,5 @@ if(dx < 0){//left
 		x = ((bbox_right & ~(TILE_SIZE-1))-1)-s_bbox_right;
 	}
 }
+
+position = vec2(x, y);//update the position vector2 for the player

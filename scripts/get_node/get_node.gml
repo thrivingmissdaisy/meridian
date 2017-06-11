@@ -2,6 +2,8 @@
 /// @param position
 var position = argument0;
 
-var _node = grid[floor(position[0]/TILE_SIZE), floor(position[1]/TILE_SIZE)];//*may need to clamp if outside of grid somehow?
+var _node = instance_place(position[0], position[1], o_node);
 
-return _node;
+if(_node != noone){
+	return _node;
+}

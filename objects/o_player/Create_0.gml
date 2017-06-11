@@ -1,28 +1,30 @@
 /// @description initialize the player
-move_dead_zone = 0.3;//*maybe make these the same?
-aim_dead_zone = 0.3;//*maybe make these the same?
-aiming = false;
+position = vec2(x, y);
+velocity = vec2(0, 0);
+
+facing = 1;//1=right -1=left
+
+lockon_radius = 200;
+missile_lock = 0;
+missile_lock_max = 10;
+
+dead_zone = 0.3;
+
+scroll_bounds = instance_place(x, y, o_screen_bounds);
+
 lean = 0;
 lean_max = 25;
 spd = 4;
 dash_spd = 10;
-angle = 0;//for drawing the weapons at the right angle and firing
 can_fire = true;
 reload = 10;
 dashing = false;
 dash_length = 10;
 can_dash = true;
 dash_cooldown = 90;
-missile_lock = 0;
-missile_lock_max = 10;
-teleport_x = 0;
-teleport_y = 0;
 
-dir_x = 0;
-dir_y = 0;
-
-dx = 0;
-dy = 0;
+teleport_location = x;
+teleport_distance = 200;
 
 state = "initialize";
 blaster_obtained = false;
@@ -43,3 +45,19 @@ s_bbox_top = sprite_get_bbox_top(sprite_index)-sprite_get_yoffset(sprite_index);
 
 //create the camera target
 instance_create_depth(x, y, depth, o_camera_target);
+
+//deactivate everything outside the bounds
+instance_deactivate_region(
+	scroll_bounds.bbox_left,
+	scroll_bounds.bbox_top,
+	scroll_bounds.sprite_width*scroll_bounds.image_xscale,
+	scroll_bounds.sprite_height*scroll_bounds.image_yscale,
+	false, true
+);
+	
+	
+	
+	
+	
+	
+	

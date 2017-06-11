@@ -2,17 +2,17 @@
 #macro TILE_SIZE 64
 #macro X 0
 #macro Y 1
-#macro WALKABLE 2
-#macro GRID_X 3
-#macro GRID_Y 4
-#macro GCOST 5
-#macro HCOST 6
-#macro PARENT 7
-#macro CHILD 8
+//*#macro WALKABLE 2
+//*#macro GRID_X 3
+//*#macro GRID_Y 4
+//*#macro GCOST 5
+//*#macro HCOST 6
+//*#macro PARENT 7
+//*#macro CHILD 8
 
 //set game resolution based on this display
 ideal_width = 0;
-ideal_height = 768;
+ideal_height = 720;
 
 aspect_ratio = display_get_width()/display_get_height();
 

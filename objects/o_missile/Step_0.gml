@@ -1,4 +1,7 @@
 /// @description move towards target and explode on collision
+if(target = noone){//* if the target gets destroyed destroy this for now retarget nearest if there is one or collide with wall and blowup
+	instance_destroy();
+}
 
 //reset steering
 steering = vec2(0, 0);
